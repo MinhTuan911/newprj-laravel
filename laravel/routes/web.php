@@ -28,5 +28,9 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/logout',[UserController::class, 'logout']);
-
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/listuser', [UserController::class, 'listuser'])->name('listuser');
+Route::get('/readuser', [UserController::class, 'readuser'])->name('readuser');
+Route::get('/edituser/{id}', [UserController::class, 'edituser'])->name('edituser');
+Route::put('/updateuser/{id}', [UserController::class, 'updateuser'])->name('updateuser');
+Route::delete('/deleteuser/{id}', [UserController::class, 'deleteuser'])->name('deleteuser');
