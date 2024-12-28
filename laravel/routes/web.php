@@ -3,6 +3,8 @@
 use App\Http\Controllers\ManufactureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarController;
 use app\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,23 @@ Route::get('/showmanufacture/{id}', [ManufactureController::class, 'show'])->nam
 Route::get('editmanufacture/{id}', [ManufactureController::class, 'edit'])->name('editmanufacture');
 Route::post('updatemanufacture/{id}', [ManufactureController::class, 'update'])->name('updatemanufacture');
 Route::delete('deletemanufacture/{id}', [ManufactureController::class, 'delete'])->name('deletemanufacture');
+
+
+//brands
+Route::get('/addbrand', [BrandController::class, 'addBrand'])->name('addbrand');
+Route::post('/addbrand', [BrandController::class, 'storeBrand'])->name('storebrand');
+Route::get('/listbrand', [BrandController::class, 'listBrand'])->name('listbrand');
+Route::get('/showbrand/{id}', [BrandController::class, 'showBrand'])->name('showbrand');
+Route::get('edit-brand/{id}', [BrandController::class, 'editBrand'])->name('editbrand');
+Route::post('update-brand/{id}', [BrandController::class, 'updateBrand'])->name('updatebrand');
+Route::delete('delete-brand/{id}', [BrandController::class, 'deleteBrand'])->name('deletebrand');
+
+//cars
+Route::get('/addcar', [CarController::class, 'addCar'])->name('addcar');
+Route::post('/addcar', [CarController::class, 'storeCar'])->name('storecar');
+Route::get('/listcar', [CarController::class, 'listCar'])->name('listcar');
+Route::get('/showcar/{id}', [CarController::class, 'showCar'])->name('showcar');
+// Route::get('timkiem', [CarController::class, 'TimKiemCar'])->name('cars.showTen');
+Route::delete('delete-car/{id}', [CarController::class, 'deleteCar'])->name('deletecar');
+Route::get('edit-car/{id}', [CarController::class, 'editCar'])->name('editcar');
+Route::put('update-car/{id}', [CarController::class, 'updateCar'])->name('updatecar');
