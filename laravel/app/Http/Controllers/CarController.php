@@ -32,37 +32,49 @@ class CarController extends Controller
      * Store a newly created car in storage.
      */
     public function storeCar(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'brand' => 'required',
-            'manufacture' => 'required',
-            'price' => 'required|numeric',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'amount' => 'required|integer',
-        ]);
+{
+    $request->validate([
+        'name' => 'required',
+        'brand' => 'required',
+        'manufacture' => 'required',
+        'price' => 'required|numeric',
+        'description' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Hình chính
+        'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Hình phụ
+        'amount' => 'required|integer',
+    ]);
 
-        // Xử lý việc lưu file ảnh và lấy đường dẫn đã lưu
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-        }
-
-        $car = new Car();
-        $car->name = $request->name;
-        $car->brand = $request->brand;
-        $car->manufacture = $request->manufacture;
-        $car->price = $request->price;
-        $car->description = $request->description;
-        $car->image = $imageName ?? null; // Lưu tên hình ảnh vào cơ sở dữ liệu
-        $car->amount = $request->amount; // Lưu số chỗ
-        $car->save();
-
-        return redirect()->route('listcar')->with('success', 'Car added successfully');
+    // Lưu hình chính
+    $mainImageName = null;
+    if ($request->hasFile('image')) {
+        $mainImage = $request->file('image');
+        $mainImageName = time() . '_main.' . $mainImage->getClientOriginalExtension();
+        $mainImage->move(public_path('images'), $mainImageName);
     }
 
+    // Tạo xe mới
+    $car = Car::create([
+        'name' => $request->name,
+        'brand' => $request->brand,
+        'manufacture' => $request->manufacture,
+        'price' => $request->price,
+        'description' => $request->description,
+        'image' => $mainImageName,
+        'amount' => $request->amount,
+    ]);
+
+    // Lưu hình ảnh phụ
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+
+            $car->images()->create(['image' => $imageName]);
+        }
+    }
+
+    return redirect()->route('listcar')->with('success', 'Xe đã được thêm thành công!');
+}
     public function listCar()
     {
 
@@ -109,7 +121,7 @@ class CarController extends Controller
     // }
     public function showCar($id)
     {
-        $car = Car::find($id);
+        $car = Car::with('images')->find($id); // Sử dụng quan hệ để lấy hình ảnh phụ
         if (!$car) {
             return redirect()->back()->with('error', 'Car not found');
         }

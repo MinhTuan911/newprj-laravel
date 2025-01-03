@@ -9,6 +9,7 @@ class Car extends Model
 {
     use HasFactory;
     protected $table = 'cars'; // Tên của bảng trong cơ sở dữ liệu
+    protected $fillable = ['name', 'brand', 'manufacture', 'price', 'image', 'amount', 'description'];
 
     protected $primaryKey = 'id'; // Khóa chính của bảng
 
@@ -17,15 +18,19 @@ class Car extends Model
      * Relationship many to many
      * @return BelongsToMany
      */
-    public function users(): BelongsToMany
+    public function images()
+    {
+        return $this->hasMany(CarImage::class, 'car_id');
+    }
+     public function users()
     {
         return $this->belongsToMany(User::class);
     }
-    public function brand(): BelongsTo
+    public function brand()
     {
         return $this->belongsTo(Brand::class);
     }
-    public function manufacture(): BelongsTo
+    public function manufacture()
     {
         return $this->belongsTo(Manufacture::class);
     }

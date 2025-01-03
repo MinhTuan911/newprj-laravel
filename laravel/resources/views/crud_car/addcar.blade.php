@@ -71,6 +71,13 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="images" class="form-label">Choose Sub Car Images</label>
+                                <input type="file" class="form-control" id="images" name="images[]" accept="image/*" multiple required>
+                                @error('images.*')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="mb-3 mt-5 text-center">
                                 <button type="submit" class="btn btn-dark btn-lg btn-update">Add Car</button>
                             </div>
