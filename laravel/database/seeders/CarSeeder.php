@@ -10,6 +10,7 @@ class CarSeeder extends Seeder
 {
      /**
      * Run the database seeds.
+     * php artisan db:seed --class=CarSeeder
      */
     public function run(): void
     {
@@ -249,38 +250,6 @@ class CarSeeder extends Seeder
                     'updated_at' => now(),
                 ],
             ]);
-            $car7Id = DB::table('cars')->insertGetId([
-                'name' => 'Lamborghini Aventador SVJ Giallo Orion',
-                'brand' => 'Lamborghini',
-                'manufacture' => 'Mini GT',
-                'image' => '563.jpg', // Đường dẫn ảnh chính
-                'price' => 329000,
-                'description' => 'Hàng hóa chưa có mô tả chi tiết',
-                'amount' => 10,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-    
-            DB::table('car_images')->insert([
-                [
-                    'car_id' => $car7Id,
-                    'image' => '563_1.jpg',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'car_id' => $car7Id,
-                    'image' => '563_2.jpg',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'car_id' => $car7Id,
-                    'image' => '563_3.jpg',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-            ]);
             //
             $car8Id = DB::table('cars')->insertGetId([
                 'name' => 'LB★WORKS Lamborghini Huracan ver. 2 Red',
@@ -380,9 +349,339 @@ class CarSeeder extends Seeder
                     'updated_at' => now(),
                 ],
             ]);
+            //
+            $car11Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 (992) GT3 RS Black with Pyro Red',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '681.jpg', // Đường dẫn ảnh chính
+                'price' => 390000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car11Id,
+                    'image' => '681_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car11Id,
+                    'image' => '681_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car11Id,
+                    'image' => '681_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car12Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911(991) GT2 RS Weissach Package Miami Blue',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '344.jpg', // Đường dẫn ảnh chính
+                'price' => 590000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car12Id,
+                    'image' => '344_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car12Id,
+                    'image' => '344_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car12Id,
+                    'image' => '344_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car13Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 GT3 R #80 GTD AO Racing 2023 IMSA Sebring 12 Hrs',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '713.jpg', // Đường dẫn ảnh chính
+                'price' => 390000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car13Id,
+                    'image' => '713_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car13Id,
+                    'image' => '713_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car13Id,
+                    'image' => '713_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car14Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 Targa 4S Heritage Design Edition GT Silver Metallic',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '461.jpg', // Đường dẫn ảnh chính
+                'price' => 390000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car14Id,
+                    'image' => '461_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car14Id,
+                    'image' => '461_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car14Id,
+                    'image' => '461_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car15Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 GT3 R #9 GTD PRO Pfaff Motorsports IMSA 2023 Sebring 12 Hrs. Winner',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '770.jpg', // Đường dẫn ảnh chính
+                'price' => 390000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car15Id,
+                    'image' => '770_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car15Id,
+                    'image' => '770_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car15Id,
+                    'image' => '770_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car16Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 Turbo S Guards Red',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '423.jpg', // Đường dẫn ảnh chính
+                'price' => 329000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car16Id,
+                    'image' => '423_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car16Id,
+                    'image' => '423_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car16Id,
+                    'image' => '423_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car17Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 (992) GT3 Shark Blue',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '381.jpg', // Đường dẫn ảnh chính
+                'price' => 329000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car17Id,
+                    'image' => '381_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car17Id,
+                    'image' => '381_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car17Id,
+                    'image' => '381_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car19Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 Carrera 4S Racing Yellow',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '780.jpg', // Đường dẫn ảnh chính
+                'price' => 329000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car19Id,
+                    'image' => '780_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car19Id,
+                    'image' => '780_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car19Id,
+                    'image' => '780_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car20Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 Targa 4S Heritage Design Edition Cherry Red',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '461.jpg', // Đường dẫn ảnh chính
+                'price' => 490000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car20Id,
+                    'image' => '461_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car20Id,
+                    'image' => '461_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car20Id,
+                    'image' => '461_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+            //
+            $car21Id = DB::table('cars')->insertGetId([
+                'name' => 'Porsche 911 GT2 RS Racing Yellow',
+                'brand' => 'Porsche',
+                'manufacture' => 'Mini GT',
+                'image' => '136.jpg', // Đường dẫn ảnh chính
+                'price' => 490000,
+                'description' => 'Hàng hóa chưa có mô tả chi tiết',
+                'amount' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            DB::table('car_images')->insert([
+                [
+                    'car_id' => $car21Id,
+                    'image' => '136_1.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car21Id,
+                    'image' => '136_2.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'car_id' => $car21Id,
+                    'image' => '136_3.jpg',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
 
-    
-    
+
+
     
     
     
