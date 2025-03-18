@@ -2,6 +2,42 @@
     .thumbnail {
         border: none !important; /* Xóa viền */
     }
+    .cart-quantity {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    border-radius: 8px;
+    padding: 5px;
+    width: fit-content;
+}
+
+.quantity-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quantity-btn:hover {
+    background: #ddd;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
 </style>
 @extends('dashboard')
 @section('content')
@@ -85,6 +121,23 @@
                         <p>Car not found</p>
                         @endif
                     </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <form action="{{ route('addcart') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $car->id }}">
+                                <div class="mb-3">
+                                    <label for="quantity" class="form-label">Quantity:</label>
+                                    <div class="cart-quantity d-flex align-items-center">
+                                        <button type="button" class="quantity-btn decrease-btn">-</button>
+                                        <input type="text" id="quantity" name="quantity" value="1" class="quantity-input" readonly max="{{ $car->amount }}">
+                                        <button type="button" class="quantity-btn increase-btn">+</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="card-footer text-center py-3">
                         <a href="{{ route('listcar') }}" class="btn btn-lg btn-dark">Back to Cars</a>
                     </div>
@@ -108,6 +161,30 @@
                 });
             });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+    const decreaseBtn = document.querySelector(".decrease-btn");
+    const increaseBtn = document.querySelector(".increase-btn");
+    const quantityInput = document.querySelector("#quantity");
+    const maxQuantity = parseInt(quantityInput.getAttribute("max")) || 999; // Số lượng tối đa
+
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        decreaseBtn.addEventListener("click", function () {
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        });
+
+        increaseBtn.addEventListener("click", function () {
+            let quantity = parseInt(quantityInput.value);
+            if (quantity < maxQuantity) {
+                quantityInput.value = quantity + 1;
+            } else {
+                alert("⚠️ Bạn không thể thêm quá số lượng có trong kho!"); // Cảnh báo nếu vượt quá
+            }
+        });
+    }
+});
     </script>
 </main>
 @endsection

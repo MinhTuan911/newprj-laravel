@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CartController;
 use app\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,14 @@ use app\Models\User;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('dashboard'); // Hoặc view bạn muốn làm trang chủ, ví dụ: 'home' hoặc 'dashboard'
 });
-Route::get('/users', [UserController::class, 'index'])->name('users.index');        
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/dashboard', function () {
     return view('dashboard');
-})-> middleware('auth')->name('dashboard'); 
+})->middleware('auth')->name('dashboard');
 Route::get('/register', function () {
     return view('crud_user.register');
 })->name('register');
@@ -69,3 +71,10 @@ Route::get('/showcar/{id}', [CarController::class, 'showCar'])->name('showcar');
 Route::delete('delete-car/{id}', [CarController::class, 'deleteCar'])->name('deletecar');
 Route::get('edit-car/{id}', [CarController::class, 'editCar'])->name('editcar');
 Route::put('update-car/{id}', [CarController::class, 'updateCar'])->name('updatecar');
+
+//cart
+Route::post('/cart/add', [CartController::class, 'addcart'])->name('addcart');
+Route::get('/cart/added', [CartController::class, 'addedcart'])->name('addedcart');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('viewcart');
+Route::patch('/cart/update/{id}', [CartController::class, 'updatecart'])->name('updatecart');
+Route::delete('/cart/remove/{id}', [CartController::class, 'removecart'])->name('removecart');
